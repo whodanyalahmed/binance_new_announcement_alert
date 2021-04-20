@@ -1,10 +1,12 @@
 from requests import get
-import time,chime
+import time,chime,datetime
 from bs4 import BeautifulSoup
 url = "https://www.binance.com/en/support/announcement/c-48"
 # url = "https://www.binance.com/en/support/announcement/c-49?navId=49"
-
+logFile = open("log.txt","a+")
+logFile.write("\nStarted at: " + str(datetime.datetime.now()))
 print("info : processing")
+logFile.write("\ninfo : processing\n")
 timeint = int(input("Enter time interval (in sec) : "))
 def getLatestNews(url):    
     newList = []
@@ -22,6 +24,7 @@ def writeToFile(filename,announcements):
     for ele in announcements:
         f.write(ele+'\n')
     print("info : wrote to file")
+    logFile.write("info : wrote to file\n")
 
 # writeToFile(filename,announcements)
 
@@ -42,8 +45,10 @@ while True:
       
         if(li == announcements):
             print("info : there is no new post")
+            logFile.write("info : there is no new post\n")
         else:
             print("info : there is a new post in announcements\a")
+            logFile.write("info : there is a new post in announcements\n")
             for i in range(5):
                 chime.success()   
             #     print("\a")
@@ -51,13 +56,17 @@ while True:
             new_posts = announcements_set.difference(li_set)
             new_posts =list(new_posts)
             print("\n======================")
+            logFile.write("\n======================\n")
             print("These are new posts: ")
             for new_post in new_posts:
                 print( "=> " + new_post) 
+                logFile.write( "=> " + new_post + "\n") 
             print("======================\n")
+            logFile.write("======================\n")
             writeToFile(filename,announcements)
     else:
         print("info : both have different lenghts")
+        logFile.write("info : both have different lenghts\n")
         print("info : there is a new post in announcements\a")
         for i in range(5):
             chime.success()   
@@ -66,10 +75,13 @@ while True:
         new_posts = announcements_set.difference(li_set)
         new_posts = list(new_posts)
         print("\n======================")
+        logFile.write("\n======================\n")
         print("These are new posts: ")
         for new_post in new_posts:
             print( "=> " + new_post) 
+            logFile.write( "=> " + new_post + "\n") 
         print("======================\n")
+        logFile.write("======================\n")
         writeToFile(filename,announcements)
     
     time.sleep(timeint)

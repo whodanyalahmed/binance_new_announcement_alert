@@ -1,0 +1,17 @@
+Started at: 2021-04-20 13:09:59.454862
+info : processing
+info : there is no new post
+info : there is no new post
+info : there is a new post in announcements
+
+======================
+=> Binance Futures Will Launch USDT-Margined DGB Perpetual Contracts with Up to 25X Leverage
+======================
+info : wrote to file
+info : there is no new post
+info : both have different lenghts
+
+======================
+=> Binance Launches Zero-Commission, Tradable Stock Tokens
+======================
+info : wrote to file
