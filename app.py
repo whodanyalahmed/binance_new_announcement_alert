@@ -1,5 +1,5 @@
 from requests import get
-import time,chime,datetime
+import time,chime,datetime,os
 from bs4 import BeautifulSoup
 url = "https://www.binance.com/en/support/announcement/c-48"
 # url = "https://www.binance.com/en/support/announcement/c-49?navId=49"
@@ -25,7 +25,13 @@ def writeToFile(filename,announcements):
         f.write(ele+'\n')
     print("info : wrote to file")
     logFile.write("info : wrote to file\n")
-
+if os.path.isfile(filename):
+    print ("info : File already exist")
+    logFile.write("info : File already exist\n")
+else:
+    print ("info : File is not there...creating one")
+    logFile.write("info : File is not there...creating one\n")
+    open(filename,"w+").close
 # writeToFile(filename,announcements)
 
 while True:
